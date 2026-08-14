@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canonical page templates — demo</title>
+<meta name="description" content="Two templates for a personal professional homepage, shown with the same example content.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --page: #0b0d10; --ink: #e9ecef; --muted: #99a2ad; --faint: #727d8c;
+    --rule: #1f242c; --surface: #12151b; --accent: #5aa8d0;
+    --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: clamp(3rem, 10vh, 7rem) 1.5rem 5rem;
+    background: var(--page); color: var(--ink); font-family: var(--font);
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 44rem; margin-inline: auto; }
+  h1 { margin: 0 0 1rem; font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem);
+       font-weight: 500; letter-spacing: -0.02em; }
+  .lede { margin: 0 0 3rem; color: var(--muted); max-width: 34rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+  .card {
+    display: block; padding: 1.5rem 1.4rem 1.6rem; background: var(--surface);
+    border: 1px solid var(--rule); border-radius: 8px; text-decoration: none;
+    color: inherit; transition: border-color .2s ease, transform .2s ease;
+  }
+  .card:hover { border-color: #38414d; transform: translateY(-2px); }
+  .card h2 { margin: 0 0 .4rem; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
+  .card p { margin: 0; color: var(--muted); font-size: .9375rem; }
+  .card .go { display: inline-block; margin-top: 1rem; font-family: var(--mono);
+              font-size: .75rem; color: var(--accent); }
+  .note { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
+          color: var(--faint); font-size: .875rem; }
+  .note a { color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Canonical page templates</h1>
+  <p class="lede">Two templates for a personal professional homepage, shown with the same
+     example content so the difference is the design and nothing else. The person is invented.
+     Each page carries a switcher at the bottom, so you can move between them without coming back here.</p>
+
+  <div class="grid">
+    <a class="card" href="dossier/">
+      <h2>Dossier</h2>
+      <p>Serif, quiet, no motion and no JavaScript. Built for a role change, and for reading
+         once by a stranger who is deciding whether to reply.</p>
+      <span class="go">Open Dossier →</span>
+    </a>
+    <a class="card" href="signal/">
+      <h2>Signal</h2>
+      <p>Sans, dark by default with a light toggle, a drifting dot field, and three
+         capability layouts to switch between.</p>
+      <span class="go">Open Signal →</span>
+    </a>
+  </div>
+
+  <p class="note">Free with <a href="https://sudo.coach">Sudo</a>. Source at
+     <a href="https://github.com/taylorbanks/canonical-pages">canonical-pages</a>.</p>
+</div>
+</body>
+</html>

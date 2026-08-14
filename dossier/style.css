@@ -1,0 +1,344 @@
+/* =========================================================================
+   Dossier
+   Restrained, typographic, no motion, no script, no network requests.
+   The only value the generator substitutes is --accent.
+   ========================================================================= */
+
+/* Fonts ship in the folder. Nothing is fetched from a CDN, so the page still
+   makes zero outbound requests and the security headers stay as strict as
+   they were. Source Serif is a variable file: one download covers every
+   weight, which is why there is a range here instead of two @font-face rules.
+   Both faces are SIL Open Font License. */
+
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("fonts/source-serif-var.woff2") format("woff2-variations");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("fonts/plex-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("fonts/plex-mono-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --accent: #1F7099;
+
+  --ink:        #16181c;
+  --ink-muted:  #5a6169;
+  --ink-faint:  #6e7379;
+  --page:       #fbfbfa;
+  --rule:       #e2e2df;
+
+  --measure: 34rem;
+  --gap: clamp(2.5rem, 6vw, 4.5rem);
+
+  /* Dossier reads as a document, so it is set in a serif. Signal is the sans
+     one. Two templates that share a schema should not also share a face. */
+  --font: "Source Serif 4", Charter, "Bitstream Charter", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink:       #e8e8e6;
+    --ink-muted: #9ba1a8;
+    --ink-faint: #798088;
+    --page:      #121316;
+    --rule:      #2a2c31;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink:       #e8e8e6;
+  --ink-muted: #9ba1a8;
+  --ink-faint: #798088;
+  --page:      #121316;
+  --rule:      #2a2c31;
+}
+
+/* ---------------------------------------------------------------- base --- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 2rem) 6rem;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+body > * {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+p { margin: 0 0 1rem; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip:focus {
+  position: static;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* ------------------------------------------------------------ masthead --- */
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--gap);
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+
+.profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+.profiles a {
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+.profiles a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* ---------------------------------------------------------------- lede --- */
+
+.lede { margin-bottom: var(--gap); }
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 1.15rem + 1.7vw, 2.125rem);
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.014em;
+  text-wrap: balance;
+}
+
+/* Role and location are separate flex items, so when the line runs out of room
+   it breaks between them instead of orphaning the last word of the location. */
+
+.headline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.6em;
+  margin: 1.25rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+.headline .sep { color: var(--ink-faint); }
+.headline .loc { white-space: nowrap; }
+.headline .seg:not(.loc) { text-wrap: balance; }
+
+/* ------------------------------------------------------------ sections --- */
+
+section + section,
+main > section:not(.lede) {
+  padding-top: var(--gap);
+  border-top: 1px solid var(--rule);
+  margin-top: var(--gap);
+}
+
+h2 {
+  margin: 0 0 1.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink-muted);
+}
+
+h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+
+h3 a { color: inherit; }
+
+/* -------------------------------------------------------- capabilities --- */
+
+.capabilities {
+  margin: 0;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.capabilities dt {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.capabilities dd {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+/* ------------------------------------------------------------- entries --- */
+
+.entry + .entry {
+  margin-top: 2rem;
+}
+
+.entry .meta {
+  margin: 0 0 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.78125rem;
+  letter-spacing: 0.01em;
+  color: var(--ink-faint);
+}
+
+.entry p:not(.meta) {
+  color: var(--ink-muted);
+}
+
+/* ------------------------------------------------------------ criteria --- */
+
+.criteria {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+  color: var(--ink-muted);
+}
+
+.criteria li {
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.criteria li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.4rem;
+  height: 1px;
+  background: var(--ink-faint);
+}
+
+/* ----------------------------------------------------------- next step --- */
+
+.contact {
+  font-size: 1.0625rem;
+}
+
+/* -------------------------------------------------------------- footer --- */
+
+footer {
+  margin-top: var(--gap);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+/* --------------------------------------------------------------- print ---
+   Recruiters and hiring managers print this page or save it to PDF. It should
+   survive that without a stylesheet written for a screen.
+   ------------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+@media print {
+  :root {
+    --ink: #000;
+    --ink-muted: #222;
+    --ink-faint: #555;
+    --page: #fff;
+    --rule: #ccc;
+  }
+
+  body {
+    padding: 0;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  .skip, .profiles a[href^="http"]::after { display: none; }
+
+  a { color: #000; text-decoration: none; }
+
+  .profiles a::after,
+  .contact a::after {
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    color: #555;
+  }
+
+  section, .entry { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+}

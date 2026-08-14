@@ -1,0 +1,8 @@
+# Cloudflare Pages and Netlify read this file. Other hosts ignore it.
+/*
+  Content-Security-Policy: default-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; script-src 'none'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), interest-cohort=()
+  X-Frame-Options: DENY

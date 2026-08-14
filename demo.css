@@ -1,0 +1,83 @@
+/* Demo chrome. Injected into the deployed copies only; no client download
+   contains this file. It carries its own colours rather than inheriting the
+   page's, because it has to stay readable on a light template and a dark one.
+   Fixed to the bottom so it never fights Signal's sticky masthead. */
+
+.demo-bar {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 0.6rem;
+
+  max-width: calc(100vw - 2rem);
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(16, 18, 22, 0.86);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.7);
+
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: #cfd5dd;
+}
+
+.demo-bar nav {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.demo-bar .cap {
+  color: #79828e;
+  padding-inline: 0.15rem;
+}
+
+.demo-bar .rule {
+  width: 1px;
+  align-self: stretch;
+  margin-inline: 0.3rem;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.demo-bar a {
+  display: inline-block;
+  padding: 0.32rem 0.6rem;
+  border-radius: 999px;
+  color: #cfd5dd;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.demo-bar a:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  text-decoration: none;
+}
+
+.demo-bar a.on {
+  background: #e9ecef;
+  color: #14161a;
+}
+
+.demo-bar a:focus-visible {
+  outline: 2px solid #7fb6d6;
+  outline-offset: 2px;
+}
+
+/* Keep the bar clear of the page's own last line on short viewports. */
+@media (max-height: 34rem) {
+  .demo-bar { position: static; transform: none; margin: 2rem auto; }
+}
+
+@media print {
+  .demo-bar { display: none !important; }
+}

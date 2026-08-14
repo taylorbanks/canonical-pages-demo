@@ -1,0 +1,657 @@
+/* Fonts ship in the folder. Nothing is fetched from a CDN, so the page still
+   makes zero outbound requests and the security headers stay as strict as
+   they were. Plex Sans is a variable file: one download covers every weight,
+   which is why there is a range here instead of three @font-face rules.
+   Both faces are SIL Open Font License. */
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("fonts/plex-sans-var.woff2") format("woff2-variations");
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("fonts/plex-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("fonts/plex-mono-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================================
+   Signal — Trace
+   Dark by default with a real light mode, a living dot field behind the page,
+   and structure that does not read as a document: full-bleed sections, a
+   sticky masthead, a capabilities block with three selectable layouts, and
+   evidence as rows that respond to the pointer.
+   The only value the generator substitutes is --accent.
+   ========================================================================= */
+
+:root {
+  --accent: #1F7099;
+
+  /* Dark is the base. Light is defined further down and is a peer, not a
+     fallback: a client who sets theme: light gets a page designed for it. */
+  --page:       #0b0d10;
+  --surface:    #12151b;
+  --surface-up: #171b22;
+  --ink:        #e9ecef;
+  --ink-muted:  #99a2ad;
+  --ink-faint:  #727d8c;
+  --rule:       #1f242c;
+  --rule-firm:  #2c333d;
+  --dot:        #2a323d;
+
+  /* On a dark ground a mid-tone accent goes muddy. Lift it, and let the
+     client keep choosing one colour rather than two. */
+  --accent-lift: color-mix(in oklab, var(--accent) 74%, white);
+  --glow: color-mix(in oklab, var(--accent) 55%, transparent);
+
+  --measure: 40rem;
+  --gap: clamp(4rem, 9vw, 7rem);
+
+  /* Signal is the sans one; Dossier is set in a serif. Same mono in both, so
+     the two still read as one family of templates. */
+  --font: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease: cubic-bezier(0.2, 0.6, 0.25, 1);
+
+  color-scheme: dark;
+}
+
+/* Dark is the default, deliberately, and the system setting does not override
+   it: `theme: auto` and `theme: dark` both land here. A reader who wants light
+   uses the toggle, which is a decision they make rather than one their laptop
+   makes for them. A client who wants light as the starting point sets
+   `theme: light` in the profile. */
+
+:root[data-theme="light"] {
+  --page:       #fafaf8;
+  --surface:    #ffffff;
+  --surface-up: #ffffff;
+  --ink:        #15171b;
+  --ink-muted:  #545b64;
+  --ink-faint:  #6b7179;
+  --rule:       #e6e6e2;
+  --rule-firm:  #d2d3cf;
+  --dot:        #d5d7d2;
+  --accent-lift: var(--accent);
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------- base --- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+p { margin: 0; }
+
+a { color: var(--accent-lift); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 0.22em; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-lift);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus {
+  position: static;
+  display: inline-block;
+  margin: 1rem;
+  color: var(--accent-lift);
+}
+
+.detail { color: var(--ink-muted); }
+.dot { color: var(--rule-firm); }
+
+/* Every section is full width; this holds the reading column inside it. */
+.wrap {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 2rem);
+}
+
+/* --------------------------------------------------------------- field ---
+   Tiled dot grid, drifting by exactly one tile so the loop has no seam, masked
+   so it fades out below the hero. Animated with transform rather than
+   background-position to keep it off the main thread.
+   ------------------------------------------------------------------------ */
+
+.field {
+  position: fixed;
+  inset: -20vmax;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.5px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 12%, #000 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 12%, #000 20%, transparent 78%);
+  opacity: 0.85;
+}
+
+[data-motion="on"] .field {
+  animation: drift 44s linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(34px, 34px, 0); }
+}
+
+body > *:not(.field) { position: relative; z-index: 1; }
+
+/* ------------------------------------------------------------ masthead --- */
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--page) 84%, transparent);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid var(--rule);
+}
+
+.masthead-inner {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding: 0.9rem clamp(1.25rem, 5vw, 2rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.name {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+
+.profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.005em;
+}
+
+.profiles a { color: var(--ink-faint); }
+.profiles a:hover { color: var(--accent-lift); text-decoration: none; }
+
+/* --------------------------------------------------------------- theme ---
+   Hidden until the script confirms it can do anything. Without JS the page
+   stays on whatever the profile chose, and an inert control never appears.
+   ------------------------------------------------------------------------ */
+
+.masthead-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.theme-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin: -0.35rem 0;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease),
+              background 0.2s var(--ease), transform 0.08s var(--ease);
+}
+
+[data-js="on"] .theme-toggle { display: inline-flex; }
+
+.theme-toggle:hover {
+  color: var(--accent-lift);
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--rule-firm));
+  background: var(--surface);
+}
+
+.theme-toggle:active { transform: scale(0.94); }
+
+.theme-toggle svg { display: block; }
+
+/* The icon shows where the click goes, so dark mode shows a sun. */
+.theme-toggle .i-sun { display: none; }
+.theme-toggle .i-moon { display: block; }
+:root:not([data-theme="light"]) .theme-toggle .i-sun { display: block; }
+:root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
+
+/* ---------------------------------------------------------------- hero --- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: clamp(24rem, 62dvh, 34rem);
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+/* Role and location are separate flex items, so when the line runs out of room
+   it breaks between them instead of orphaning the last word of the location.
+   The separator sits with the first segment and ends the line, rather than
+   starting the next one. */
+
+.eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.75em;
+  margin-bottom: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.005em;
+  color: var(--accent-lift);
+}
+
+.eyebrow .sep { color: var(--rule-firm); }
+
+/* A location is short and reads badly split. A role can be long, so it is
+   allowed to wrap, balanced rather than ragged. */
+.eyebrow .loc { white-space: nowrap; }
+.eyebrow .seg:not(.loc) { text-wrap: balance; }
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.875rem, 1.15rem + 3.1vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+/* The one thing that moves on load. Content itself never animates in above
+   the fold, so the largest text paints immediately. */
+.underline {
+  display: block;
+  width: min(9rem, 40%);
+  height: 2px;
+  margin-top: 2.5rem;
+  background: linear-gradient(90deg, var(--accent-lift), transparent);
+  transform-origin: left center;
+}
+
+[data-motion="on"] .underline {
+  animation: draw 0.9s var(--ease) 0.15s both;
+}
+
+@keyframes draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ------------------------------------------------------------- section --- */
+
+main > section:not(.hero) { padding-block: 0 var(--gap); }
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 2.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule-firm);
+  transform-origin: left center;
+}
+
+h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+}
+
+h3 a { color: inherit; }
+h3 a:hover { color: var(--accent-lift); text-decoration: none; }
+
+.arrow {
+  display: inline-block;
+  margin-left: 0.4em;
+  color: var(--accent-lift);
+  transition: transform 0.2s var(--ease);
+}
+
+a:hover .arrow { transform: translateX(0.28em); }
+
+/* ---------------------------------------------------------------- caps ---
+   Three layouts, one markup. Each list item is a grid holding the same three
+   pieces — the counter, the label, the detail — and the layout only changes
+   where those pieces sit. That is why `capabilities_layout` in the profile can
+   switch between them without the generator emitting different HTML.
+   ------------------------------------------------------------------------ */
+
+.caps {
+  counter-reset: cap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+}
+
+.caps li {
+  counter-increment: cap;
+  display: grid;
+  align-content: start;
+}
+
+.caps li::before {
+  content: counter(cap, decimal-leading-zero);
+  grid-area: n;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--accent-lift);
+}
+
+.caps .label { grid-area: l; font-weight: 600; margin: 0; }
+.caps .detail { grid-area: d; font-size: 0.9375rem; line-height: 1.55; margin: 0; }
+
+/* --- cards: the familiar one. Built for exactly three. ------------------- */
+
+.caps[data-layout="cards"] {
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+}
+
+.caps[data-layout="cards"] li {
+  grid-template-areas: "n" "l" "d";
+  padding: 1.5rem 1.35rem 1.6rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
+              transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.caps[data-layout="cards"] li::before { margin-bottom: 1rem; }
+.caps[data-layout="cards"] .label { margin-bottom: 0.5rem; }
+
+/* At this measure the grid is two columns wide, so an odd number of items
+   would leave the last row half empty. The odd one out spans instead, which
+   works at any count and reads as a decision rather than a gap. */
+.caps[data-layout="cards"] li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.caps[data-layout="cards"] li:hover {
+  background: var(--surface-up);
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--rule-firm));
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -22px var(--glow);
+}
+
+/* --- rows: hairline-divided, number in the margin. Any count. ------------ */
+
+.caps[data-layout="rows"] { border-top: 1px solid var(--rule); }
+
+.caps[data-layout="rows"] li {
+  grid-template-columns: 3.25rem 1fr;
+  grid-template-areas: "n l" "n d";
+  gap: 0 1.25rem;
+  padding: 1.65rem 0 1.75rem;
+  border-bottom: 1px solid var(--rule);
+  transition: padding-left 0.3s var(--ease);
+}
+
+.caps[data-layout="rows"] li::before { padding-top: 0.3rem; font-size: 0.75rem; }
+.caps[data-layout="rows"] .label { font-size: 1.0625rem; margin-bottom: 0.35rem; letter-spacing: -0.006em; }
+.caps[data-layout="rows"] li:hover { padding-left: 0.6rem; }
+
+/* --- split: name left, detail right. Any count. -------------------------- */
+
+.caps[data-layout="split"] li {
+  grid-template-columns: minmax(0, 8rem) minmax(0, 1fr);
+  grid-template-areas: "n d" "l d";
+  gap: 0.5rem 1.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.caps[data-layout="split"] li:last-child { border-bottom: 1px solid var(--rule); }
+.caps[data-layout="split"] .label { font-size: 0.9375rem; line-height: 1.35; }
+.caps[data-layout="split"] .detail { font-size: 1rem; }
+
+@media (max-width: 34rem) {
+  .caps[data-layout="split"] li {
+    grid-template-columns: 1fr;
+    grid-template-areas: "n" "l" "d";
+    gap: 0.35rem;
+  }
+  .caps[data-layout="rows"] li { grid-template-columns: 2.5rem 1fr; }
+}
+
+/* ---------------------------------------------------------------- rows --- */
+
+.rows {
+  display: grid;
+  border-top: 1px solid var(--rule);
+}
+
+.row {
+  padding: 1.6rem 1rem 1.7rem;
+  margin-inline: -1rem;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 4px;
+  transition: background 0.22s var(--ease);
+}
+
+.row:hover { background: var(--surface); }
+
+.row .meta {
+  margin-bottom: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+
+.row .detail { font-size: 0.9375rem; }
+
+/* ------------------------------------------------------------- feature --- */
+
+.feature {
+  padding: 1.75rem 1.6rem 1.85rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--accent-lift);
+  border-radius: 6px;
+}
+
+.feature .detail { margin-top: 0.6rem; }
+
+/* ------------------------------------------------------------ criteria --- */
+
+.lead { margin-bottom: 1.6rem; }
+
+.criteria {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.criteria li { position: relative; padding-left: 1.5rem; }
+
+.criteria li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.66em;
+  width: 0.8rem;
+  height: 1px;
+  background: var(--accent-lift);
+  opacity: 0.7;
+}
+
+/* ----------------------------------------------------------- next step --- */
+
+.next-step .contact {
+  margin-top: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 1.0625rem;
+}
+
+/* -------------------------------------------------------------- footer --- */
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding-block: 1.5rem 3rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.005em;
+  color: var(--ink-faint);
+}
+
+/* -------------------------------------------------------------- motion ---
+   Gated on [data-motion="on"], which the script sets only when the reader has
+   not asked for reduced motion. No script, no flag, no hidden state.
+   ------------------------------------------------------------------------ */
+
+[data-motion="on"] [data-reveal] h2::after { transform: scaleX(0); }
+
+[data-motion="on"] [data-reveal] h2 > span,
+[data-motion="on"] [data-reveal] .caps li,
+[data-motion="on"] [data-reveal] .row,
+[data-motion="on"] [data-reveal] .feature,
+[data-motion="on"] [data-reveal] .criteria li,
+[data-motion="on"] [data-reveal] .detail,
+[data-motion="on"] [data-reveal] .contact {
+  opacity: 0;
+  transform: translateY(0.625rem);
+}
+
+[data-motion="on"] [data-revealed] h2::after {
+  transform: scaleX(1);
+  transition: transform 0.7s var(--ease);
+}
+
+[data-motion="on"] [data-revealed] h2 > span,
+[data-motion="on"] [data-revealed] .caps li,
+[data-motion="on"] [data-revealed] .row,
+[data-motion="on"] [data-revealed] .feature,
+[data-motion="on"] [data-revealed] .criteria li,
+[data-motion="on"] [data-revealed] .detail,
+[data-motion="on"] [data-revealed] .contact {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
+
+[data-motion="on"] [data-revealed] .caps li:nth-child(1),
+[data-motion="on"] [data-revealed] .row:nth-child(1),
+[data-motion="on"] [data-revealed] .criteria li:nth-child(1) { transition-delay: 0.08s; }
+[data-motion="on"] [data-revealed] .caps li:nth-child(2),
+[data-motion="on"] [data-revealed] .row:nth-child(2),
+[data-motion="on"] [data-revealed] .criteria li:nth-child(2) { transition-delay: 0.15s; }
+[data-motion="on"] [data-revealed] .caps li:nth-child(3),
+[data-motion="on"] [data-revealed] .row:nth-child(3),
+[data-motion="on"] [data-revealed] .criteria li:nth-child(3) { transition-delay: 0.22s; }
+[data-motion="on"] [data-revealed] .caps li:nth-child(n + 4),
+[data-motion="on"] [data-revealed] .row:nth-child(n + 4),
+[data-motion="on"] [data-revealed] .criteria li:nth-child(n + 4) { transition-delay: 0.29s; }
+
+/* Belt and braces. If the flag is ever set by mistake, this still wins. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .field { animation: none !important; }
+}
+
+/* --------------------------------------------------------------- print --- */
+
+@media print {
+  :root {
+    --page: #fff; --surface: #fff; --surface-up: #fff;
+    --ink: #000; --ink-muted: #222; --ink-faint: #555;
+    --rule: #ccc; --rule-firm: #999;
+    --accent: #000; --accent-lift: #000;
+  }
+
+  body { background: #fff; font-size: 10.5pt; line-height: 1.45; }
+
+  .field, .skip, .arrow, .theme-toggle { display: none !important; }
+
+  .masthead { position: static; border-bottom: 1px solid #999; backdrop-filter: none; }
+
+  .hero { min-height: 0; padding-block: 0 1.5rem; }
+
+  .caps li, .feature, .row { border: 1px solid #ccc; background: #fff; }
+
+  a { color: #000; }
+
+  .profiles a::after,
+  .contact a::after {
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    color: #555;
+  }
+
+  section, .caps li, .row, .feature { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+
+  [data-reveal] * { opacity: 1 !important; transform: none !important; }
+}
