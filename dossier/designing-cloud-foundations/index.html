@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-US" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Designing cloud foundations the next engineer can extend — Dana Okonkwo</title>
+<meta name="description" content="What I look for before choosing an architecture, which tradeoffs only show up after the first deployment, and how ownership and handoff change the design.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://taylorbanks.github.io/canonical-pages-demo/dossier/designing-cloud-foundations/">
+
+<meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;self&#39;; img-src &#39;self&#39; data:; font-src &#39;self&#39;; script-src &#39;none&#39;; form-action &#39;none&#39;; base-uri &#39;none&#39;">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Designing cloud foundations the next engineer can extend — Dana Okonkwo">
+<meta property="og:description" content="What I look for before choosing an architecture, which tradeoffs only show up after the first deployment, and how ownership and handoff change the design.">
+<meta property="og:url" content="https://taylorbanks.github.io/canonical-pages-demo/dossier/designing-cloud-foundations/">
+<meta name="twitter:card" content="summary">
+
+<link rel="preload" href="../fonts/source-serif-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://taylorbanks.github.io/canonical-pages-demo/dossier/designing-cloud-foundations/#article",
+      "headline": "Designing cloud foundations the next engineer can extend",
+      "url": "https://taylorbanks.github.io/canonical-pages-demo/dossier/designing-cloud-foundations/",
+      "author": {
+        "@id": "https://taylorbanks.github.io/canonical-pages-demo/dossier/#person"
+      },
+      "publisher": {
+        "@id": "https://taylorbanks.github.io/canonical-pages-demo/dossier/#person"
+      },
+      "inLanguage": "en-US",
+      "description": "What I look for before choosing an architecture, which tradeoffs only show up after the first deployment, and how ownership and handoff change the design.",
+      "datePublished": "2026-08"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://taylorbanks.github.io/canonical-pages-demo/dossier/#person",
+      "name": "Dana Okonkwo",
+      "url": "https://taylorbanks.github.io/canonical-pages-demo/dossier"
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <p class="name"><a href="../">Dana Okonkwo</a></p>
+</header>
+
+<main id="main">
+  <article class="brief">
+    <h1>Designing cloud foundations the next engineer can extend</h1>
+    <p class="standfirst">What I look for before choosing an architecture, which tradeoffs only show up after the first deployment, and how ownership and handoff change the design.</p>
+    <p class="byline">Dana Okonkwo <span class="sep">·</span> 2026-08</p>
+    <div class="prose">
+<p>Most cloud foundations are judged on whether the first deployment works. That is the easiest question to answer and the least useful one, because almost any design passes it. The question that matters is what the next engineer does when the requirements change, and whether they extend what you built or route around it.</p>
+<h2>What I look for before choosing an architecture</h2>
+<p>Before the diagram, three things:</p>
+<ul><li>Who owns this in eighteen months, and how much context will they have</li><li>Which parts are expected to change, and which are being treated as permanent</li><li>What the team can actually operate, rather than what it can admire</li></ul>
+<p>The third one decides more architectures than it gets credit for. A design the on-call rotation cannot reason about at 3am is a design that will be worked around, and the workarounds become the real architecture.</p>
+<h2>The tradeoffs that only appear later</h2>
+<blockquote><p>The cost of an architectural decision is rarely paid at deployment. It is paid the first time someone needs to do something the design did not anticipate.</p></blockquote>
+<p>Managed services trade money for operational load, and that trade looks obvious until the constraint you hit is a feature the managed version does not expose. Modules and shared patterns trade flexibility for consistency, and that one looks obvious until a team needs an exception and has to choose between forking and lying about their requirements.</p>
+<p>Neither is the wrong call. Both are the wrong call when nobody wrote down what was being traded.</p>
+<h2>Ownership and handoff change the design</h2>
+<p>An architecture I will personally operate can be cleverer than one I am handing over. That is not a statement about anyone else&#39;s ability; it is about context. I know why the odd part is odd. The next person sees an odd part.</p>
+<p>So the handoff cost belongs in the design review, next to cost and latency:</p>
+<ol><li>What has to be understood before a change is safe</li><li>Where that understanding currently lives</li><li>What happens to it when I leave</li></ol>
+<h2>How I explain it to people who are not going to read the diagram</h2>
+<p>Stakeholders do not need the architecture. They need to know what the decision costs them later and what it buys them now. I try to reduce every significant choice to that pair of sentences, and if I cannot, it usually means I have not finished thinking about it.</p>
+<p>That habit is also the fastest way I know to find out that a requirement was never real.</p>
+    </div>
+  </article>
+
+  <p class="back"><a href="../">Back to Dana Okonkwo</a></p>
+</main>
+
+<footer>
+  <p>Dana Okonkwo</p>
+</footer>
+</body>
+</html>

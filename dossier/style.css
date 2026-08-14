@@ -342,3 +342,90 @@ footer {
   section, .entry { break-inside: avoid; }
   h2, h3 { break-after: avoid; }
 }
+
+/* --------------------------------------------------------------- brief ---
+   The proof-brief page. Same page furniture, plus the prose styles a piece of
+   writing needs and the front page never did.
+   ------------------------------------------------------------------------ */
+
+.masthead .name a { color: inherit; text-decoration: none; }
+.masthead .name a:hover { color: var(--accent); }
+
+.brief h1 {
+  font-size: clamp(1.5rem, 1.15rem + 1.7vw, 2.125rem);
+  margin-bottom: 1.25rem;
+}
+
+.brief .standfirst {
+  margin: 0 0 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  text-wrap: pretty;
+}
+
+.brief .byline {
+  margin: 0 0 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 0.78125rem;
+  color: var(--ink-faint);
+}
+
+.brief .byline .sep { color: var(--rule); }
+
+.prose > * { margin: 0 0 1.15rem; }
+.prose > *:last-child { margin-bottom: 0; }
+
+.prose p { text-wrap: pretty; }
+
+.prose h2 {
+  margin: 2.5rem 0 0.85rem;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.006em;
+  text-transform: none;
+  color: var(--ink);
+}
+
+.prose h3 {
+  margin: 2rem 0 0.6rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.prose ul, .prose ol { padding-left: 1.35rem; }
+.prose li { margin-bottom: 0.5rem; }
+.prose li::marker { color: var(--ink-faint); }
+
+.prose blockquote {
+  margin: 2rem 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.prose blockquote p { margin: 0; }
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.prose hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.back {
+  margin-top: var(--gap);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9375rem;
+}
