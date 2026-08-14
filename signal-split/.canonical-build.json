@@ -1,0 +1,15 @@
+{
+  "note": "Lets the generator tell its own output from your hand edits. Safe to delete.",
+  "files": {
+    "designing-cloud-foundations/index.html": "8dc7dc959770608a470a6248479e695e6daae9616858d5add9cf12e7f755c255",
+    "index.html": "5d905fba8bc7bdd79e148a05d47d232293466eea3082167756daf17546f4a0ff",
+    "_headers": "92586f068f93541e8c156fdfa1ac87dfa7e6c27b4318fa284b49fef7677e33bc",
+    "script.js": "6ed720674f1f6157f6ec0e5d3d492d40f454343f903bcbd687c719cfc3e0c1f5",
+    "style.css": "962b5bf32ad60e9cab310034eca770693345949d0924e8712c90b8bce8c8efb0",
+    "robots.txt": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1",
+    "fonts/plex-sans-var.woff2": "056e4e2459f57a0033c8c9c844ff19d6e42ac8602027803d4345823bcc939818",
+    "fonts/plex-mono-600.woff2": "ad4580d8cb4b5f627c2d18457656732f7f7b070f7837fbc380e08054157e6f6c",
+    "fonts/plex-mono-400.woff2": "c36f509c0a8f9f85f29cb44bc8701d8a9e0b14c499e77a884f789ead7093a7ac",
+    ".htaccess": "b47a0a187cd38d57c3ed36b4e8da91a34521fbb9b70268476df3b7845ec7853e"
+  }
+}

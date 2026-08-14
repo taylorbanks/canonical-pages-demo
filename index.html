@@ -7,11 +7,14 @@
 <meta name="description" content="Two templates for a personal professional homepage, shown with the same example content.">
 <meta name="robots" content="noindex, nofollow">
 <style>
+  /* Dossier's light palette, so the front door matches the restrained template
+     rather than the dark one. */
   :root {
-    --page: #0b0d10; --ink: #e9ecef; --muted: #99a2ad; --faint: #727d8c;
-    --rule: #1f242c; --surface: #12151b; --accent: #5aa8d0;
+    --page: #fbfbfa; --ink: #16181c; --muted: #5a6169; --faint: #6e7379;
+    --rule: #e2e2df; --rule-firm: #cfd0cd; --surface: #ffffff; --accent: #1f7099;
     --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: light;
   }
   * { box-sizing: border-box; }
   body {
@@ -29,7 +32,7 @@
     border: 1px solid var(--rule); border-radius: 8px; text-decoration: none;
     color: inherit; transition: border-color .2s ease, transform .2s ease;
   }
-  .card:hover { border-color: #38414d; transform: translateY(-2px); }
+  .card:hover { border-color: var(--rule-firm); transform: translateY(-2px); }
   .card h2 { margin: 0 0 .4rem; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
   .card p { margin: 0; color: var(--muted); font-size: .9375rem; }
   .card .go { display: inline-block; margin-top: 1rem; font-family: var(--mono);

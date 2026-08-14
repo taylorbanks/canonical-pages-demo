@@ -1,0 +1,14 @@
+{
+  "note": "Lets the generator tell its own output from your hand edits. Safe to delete.",
+  "files": {
+    "designing-cloud-foundations/index.html": "ff96b2d8660324de6c7453d5ec54dde4656b0803b28fdb63746de459b026a7a2",
+    "index.html": "c92c8d28f4286d10e9e1b3ef3f68f23123fc496458dfe33496967e9809760f25",
+    "_headers": "86669e530439daad436512d856f3d3f07ab7e9f2130dd9d4cc85a11140f4eb2c",
+    "style.css": "18470f9b7cfe4693b652554657ed40631a7f86c94b4e19a5d99e91ddf5d62808",
+    "robots.txt": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1",
+    "fonts/plex-mono-600.woff2": "ad4580d8cb4b5f627c2d18457656732f7f7b070f7837fbc380e08054157e6f6c",
+    "fonts/plex-mono-400.woff2": "c36f509c0a8f9f85f29cb44bc8701d8a9e0b14c499e77a884f789ead7093a7ac",
+    "fonts/source-serif-var.woff2": "286e05e5e444f44e50724df445808458dea58507e9805bba012b3b12d08ca122",
+    ".htaccess": "44a3c5c492ad19d3837b83eefc91935bfa4ff26e61ddfdecbbcb768dd28e70cf"
+  }
+}

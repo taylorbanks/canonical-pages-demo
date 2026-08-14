@@ -303,6 +303,11 @@ h1 {
   text-wrap: balance;
 }
 
+/* The statement sets its own size. A short line can carry display size; a full
+   sentence at that size fills the screen and stops being read. */
+h1[data-len="short"] { font-size: clamp(2.25rem, 1.4rem + 3.8vw, 4rem); letter-spacing: -0.035em; }
+h1[data-len="long"]  { font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.375rem); line-height: 1.2; letter-spacing: -0.02em; }
+
 /* The one thing that moves on load. Content itself never animates in above
    the fold, so the largest text paints immediately. */
 .underline {
