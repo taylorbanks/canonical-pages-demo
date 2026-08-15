@@ -1,8 +1,8 @@
 {
   "note": "Lets the generator tell its own output from your hand edits. Safe to delete.",
   "files": {
-    "designing-cloud-foundations/index.html": "fadd3a4c8c62a0702df409c0085511454a56b1d7768a1718e0794766a881345a",
-    "index.html": "de984437914039f289db6ddcf1d1900a6a954dc6a7c8ccae04d2f932cf96f60a",
+    "designing-cloud-foundations/index.html": "92aa6cb7311f1edb50c642a85ffe36ade3b61dfb7e7de14a3a3b3aae5913db2f",
+    "index.html": "4fcf41a3ff344c0ca4e3da92e9b3f4838291683cc9ce08ac1e3a8e5dea15221b",
     "_headers": "901c58d77222b30c4ca64f0b518d43b593f48ddca1c79222c00f130088603667",
     "style.css": "4b3f179accfe817754b9593d8748eed7e1965bd99be320f2154aec99aa15f506",
     "robots.txt": "35f25c04a39de96beddbc2d0279958485c287fb331f87881bbde9d11aa6b7ceb",
