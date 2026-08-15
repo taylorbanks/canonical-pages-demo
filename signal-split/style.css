@@ -771,3 +771,13 @@ footer {
   display: block;
   margin-bottom: 0.9rem;
 }
+
+/* A brief is the page most likely to be reached from outside, and on its own
+   it only says who wrote it, not what they do. */
+.author-note {
+  margin: 0 0 2.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}

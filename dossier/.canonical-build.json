@@ -1,10 +1,10 @@
 {
   "note": "Lets the generator tell its own output from your hand edits. Safe to delete.",
   "files": {
-    "designing-cloud-foundations/index.html": "cc4c183ab77a8434fa58a223b22d04b387e55d058b2bc165af1ea92835828f4a",
-    "index.html": "851252cc69f47353a84c1b87b1afd227f23f4730a4559b3e1cd72b379d77752d",
+    "designing-cloud-foundations/index.html": "fadd3a4c8c62a0702df409c0085511454a56b1d7768a1718e0794766a881345a",
+    "index.html": "c00fdc1f189dd05e61e4e29aba9267001256e3b099756242933066d11f6f8d4b",
     "_headers": "86669e530439daad436512d856f3d3f07ab7e9f2130dd9d4cc85a11140f4eb2c",
-    "style.css": "e0a03632d09f8fe17f8471cbc9737afbeb947910dfd8229351988efd23937897",
+    "style.css": "c6cb5b039d275e0ba56e5572a94195c274c765565617a9b2c8f3efc8f9c5759e",
     "robots.txt": "35f25c04a39de96beddbc2d0279958485c287fb331f87881bbde9d11aa6b7ceb",
     "fonts/plex-mono-600.woff2": "ad4580d8cb4b5f627c2d18457656732f7f7b070f7837fbc380e08054157e6f6c",
     "fonts/plex-mono-400.woff2": "c36f509c0a8f9f85f29cb44bc8701d8a9e0b14c499e77a884f789ead7093a7ac",

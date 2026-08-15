@@ -1,11 +1,11 @@
 {
   "note": "Lets the generator tell its own output from your hand edits. Safe to delete.",
   "files": {
-    "designing-cloud-foundations/index.html": "82028ac329d233529438dea8534eca99d405ff23c48b0a555516596e5d72ab2c",
-    "index.html": "2a42b084529fbaad0860f7126554160ada2acaed82d5ffc27213ae562722f539",
+    "designing-cloud-foundations/index.html": "9371b46be7e877b6f7c7eaa76a5d874205a8c67fb23ffa1957af4e49c083b3b1",
+    "index.html": "195f7ec06226e5cf824ef5de172d5ded29d6212dad6b7da0f4576a74db6ac469",
     "_headers": "92586f068f93541e8c156fdfa1ac87dfa7e6c27b4318fa284b49fef7677e33bc",
     "script.js": "6ed720674f1f6157f6ec0e5d3d492d40f454343f903bcbd687c719cfc3e0c1f5",
-    "style.css": "8d6b672bb8fb9ba0793c5362563aa038f6c6a17e24d211edd9f0a54f8f7789ce",
+    "style.css": "e4bf0a533380780f1a4e7c1bb04bc3237c02e669dcd62b19a1755c7f74eb543f",
     "robots.txt": "35f25c04a39de96beddbc2d0279958485c287fb331f87881bbde9d11aa6b7ceb",
     "fonts/plex-sans-var.woff2": "056e4e2459f57a0033c8c9c844ff19d6e42ac8602027803d4345823bcc939818",
     "fonts/plex-mono-600.woff2": "ad4580d8cb4b5f627c2d18457656732f7f7b070f7837fbc380e08054157e6f6c",
