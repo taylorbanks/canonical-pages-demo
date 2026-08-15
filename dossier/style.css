@@ -436,11 +436,13 @@ footer {
   font-size: 0.9375rem;
 }
 
-/* The extractable lede. Third person, opens with the name, so an engine
-   answering "who is this" has one passage to lift instead of three. */
+/* Third person, opens with the name. It sits below the evidence rather than
+   under the hero: the hero already names the person and states the claim, so
+   repeating it up top read as duplication to a human and added nothing for a
+   machine. Here it reads as a bio. */
 .summary {
-  margin: 1.5rem 0 0;
-  font-size: 1.0625rem;
+  margin: 0;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--ink-muted);
   text-wrap: pretty;

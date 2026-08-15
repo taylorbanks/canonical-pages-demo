@@ -2,10 +2,10 @@
   "note": "Lets the generator tell its own output from your hand edits. Safe to delete.",
   "files": {
     "designing-cloud-foundations/index.html": "ed975960832a518fb484ef763375fb91148c849fa504e92db4da3aff18f40617",
-    "index.html": "4140c10cb545062e938b9ce5c3f9d5b0d3699ee305dc8d24dfdaa451dc09b2b4",
+    "index.html": "bf37fd1d79810fc8d6429da6322b932c23eb5af7f8e004da58318488ee8bfe07",
     "_headers": "92586f068f93541e8c156fdfa1ac87dfa7e6c27b4318fa284b49fef7677e33bc",
     "script.js": "6ed720674f1f6157f6ec0e5d3d492d40f454343f903bcbd687c719cfc3e0c1f5",
-    "style.css": "6f1b15e91acbc74c83963bcca0019142fd6c49d55bf9fa5521f5aae10376c633",
+    "style.css": "f8c807c670660e8be009eb611d9349333b2741148c8d130a3117e75753fff021",
     "robots.txt": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1",
     "fonts/plex-sans-var.woff2": "056e4e2459f57a0033c8c9c844ff19d6e42ac8602027803d4345823bcc939818",
     "fonts/plex-mono-600.woff2": "ad4580d8cb4b5f627c2d18457656732f7f7b070f7837fbc380e08054157e6f6c",
