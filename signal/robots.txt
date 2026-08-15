@@ -1,2 +1,4 @@
+# Crawling is allowed so the noindex tag in the page can be read.
+# It is what actually keeps the page out of search results.
 User-agent: *
-Disallow: /
+Allow: /

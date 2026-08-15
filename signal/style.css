@@ -760,3 +760,14 @@ footer {
   color: var(--ink-muted);
   text-wrap: pretty;
 }
+
+/* A photo is the strongest visible cue that a page is about a person, and it
+   is what a share card and a search result show beside the name. */
+.avatar {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 0.9rem;
+}
