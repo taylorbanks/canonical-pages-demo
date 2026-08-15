@@ -194,6 +194,7 @@ body > *:not(.field) { position: relative; z-index: 1; }
 }
 
 .name {
+  line-height: 1.3;
   font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 600;
@@ -294,7 +295,7 @@ body > *:not(.field) { position: relative; z-index: 1; }
 .eyebrow .loc { white-space: nowrap; }
 .eyebrow .seg:not(.loc) { text-wrap: balance; }
 
-h1 {
+.statement, .brief h1 {
   margin: 0;
   font-size: clamp(1.875rem, 1.15rem + 3.1vw, 3.25rem);
   font-weight: 500;
@@ -305,8 +306,8 @@ h1 {
 
 /* The statement sets its own size. A short line can carry display size; a full
    sentence at that size fills the screen and stops being read. */
-h1[data-len="short"] { font-size: clamp(2.25rem, 1.4rem + 3.8vw, 4rem); letter-spacing: -0.035em; }
-h1[data-len="long"]  { font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.375rem); line-height: 1.2; letter-spacing: -0.02em; }
+.statement[data-len="short"] { font-size: clamp(2.25rem, 1.4rem + 3.8vw, 4rem); letter-spacing: -0.035em; }
+.statement[data-len="long"]  { font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.375rem); line-height: 1.2; letter-spacing: -0.02em; }
 
 /* The one thing that moves on load. Content itself never animates in above
    the fold, so the largest text paints immediately. */
@@ -746,4 +747,15 @@ footer {
   h2, h3 { break-after: avoid; }
 
   [data-reveal] * { opacity: 1 !important; transform: none !important; }
+}
+
+/* The extractable lede. Third person, opens with the name, so an engine
+   answering "who is this" has one passage to lift instead of three. */
+.summary {
+  margin: 1.75rem 0 0;
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  text-wrap: pretty;
 }
