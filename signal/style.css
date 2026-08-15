@@ -781,3 +781,17 @@ footer {
   font-size: 0.9375rem;
   color: var(--ink-muted);
 }
+
+/* Images sit inside the reading column and keep their aspect ratio. */
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+
+.secondary {
+  margin-top: 0.85rem;
+  font-size: 0.9375rem;
+}

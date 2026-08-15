@@ -2,13 +2,13 @@
   "note": "Lets the generator tell its own output from your hand edits. Safe to delete.",
   "files": {
     "designing-cloud-foundations/index.html": "fadd3a4c8c62a0702df409c0085511454a56b1d7768a1718e0794766a881345a",
-    "index.html": "c00fdc1f189dd05e61e4e29aba9267001256e3b099756242933066d11f6f8d4b",
-    "_headers": "86669e530439daad436512d856f3d3f07ab7e9f2130dd9d4cc85a11140f4eb2c",
-    "style.css": "c6cb5b039d275e0ba56e5572a94195c274c765565617a9b2c8f3efc8f9c5759e",
+    "index.html": "de984437914039f289db6ddcf1d1900a6a954dc6a7c8ccae04d2f932cf96f60a",
+    "_headers": "901c58d77222b30c4ca64f0b518d43b593f48ddca1c79222c00f130088603667",
+    "style.css": "4b3f179accfe817754b9593d8748eed7e1965bd99be320f2154aec99aa15f506",
     "robots.txt": "35f25c04a39de96beddbc2d0279958485c287fb331f87881bbde9d11aa6b7ceb",
     "fonts/plex-mono-600.woff2": "ad4580d8cb4b5f627c2d18457656732f7f7b070f7837fbc380e08054157e6f6c",
     "fonts/plex-mono-400.woff2": "c36f509c0a8f9f85f29cb44bc8701d8a9e0b14c499e77a884f789ead7093a7ac",
     "fonts/source-serif-var.woff2": "286e05e5e444f44e50724df445808458dea58507e9805bba012b3b12d08ca122",
-    ".htaccess": "44a3c5c492ad19d3837b83eefc91935bfa4ff26e61ddfdecbbcb768dd28e70cf"
+    ".htaccess": "1686fc868267c7d51b2e33099557d8291ad037df9d3eba925b4e81c908145aca"
   }
 }
